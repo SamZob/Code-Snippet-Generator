@@ -6,7 +6,7 @@ function generateCode() {
     })
     .then(response => response.json())
     .then(data => {
-    let formattedCode = `<pre>${data.code.replace(/\`\`\`/g, '<br>').replace(/\>/g, ' ')}</pre>`;
+    let formattedCode = `<pre>${data.code}</pre>`;
     let words = formattedCode.split(' '); // Split the code into words
     let responseDiv = document.getElementById('response');
     responseDiv.innerHTML = 'Generating code...<p>';
@@ -20,9 +20,8 @@ function generateCode() {
             setTimeout(appendWord, 100); // Adjust time as needed
         } else {
             responseDiv.innerHTML += `</p>
-            <label for="feedback">Feedback:</label>
+            <label for="feedback">Rating + Feedback:</label>
             <input type="number" id="rating" name="rating" min="1" max="5">
-            <button onclick="submitFeedback('${data.id}')">Submit Rating</button>
             <input type="text" id="feedback" name="feedback">
             <button onclick="submitFeedback('${data.id}')">Submit Feedback</button>`;
         }
