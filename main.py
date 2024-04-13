@@ -32,16 +32,26 @@ def generate_code():
 def submit_feedback():
     snippet_id = request.values.get('snippet_id')
     description = request.values.get('feedback')
+    rating = request.values.get('rating')  # Get rating from the request
+
+    # Validation for rating (ensure it's between 1 and 5)
+    try:
+        rating = int(rating)
+        if rating < 1 or rating > 5:
+            return jsonify({"error": "Rating must be between 1 and 5"}), 400
+    except ValueError:
+        return jsonify({"error": "Invalid rating value"}), 400
     
     # Find the snippet by ID
     snippet = next((item for item in snippets_db if item['id'] == snippet_id), None)
     if not snippet:
         return jsonify({"error": "Snippet not found"}), 404
 
-    feedback = {"snippet_id": snippet_id, "description": description}
+    feedback = {"snippet_id": snippet_id, "description": description, "rating": rating}
     feedbacks.append(feedback)
 
     return jsonify({"message": "Feedback received"})
+
 
 @app.route('/snippets/', methods=['GET'])
 def list_snippets():

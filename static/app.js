@@ -21,6 +21,8 @@ function generateCode() {
         } else {
             responseDiv.innerHTML += `</p>
             <label for="feedback">Feedback:</label>
+            <input type="number" id="rating" name="rating" min="1" max="5">
+            <button onclick="submitFeedback('${data.id}')">Submit Rating</button>
             <input type="text" id="feedback" name="feedback">
             <button onclick="submitFeedback('${data.id}')">Submit Feedback</button>`;
         }
@@ -33,12 +35,13 @@ function generateCode() {
 
 function submitFeedback(snippetId) {
     const feedback = document.getElementById('feedback').value;
+    const rating = document.getElementById('rating').value; // Get rating value
     fetch('/submit-feedback/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: new URLSearchParams({'snippet_id': snippetId, 'feedback': feedback})
+        body: new URLSearchParams({'snippet_id': snippetId, 'feedback': feedback, 'rating': rating})
     })
     .then(response => response.json())
     .then(data => {
