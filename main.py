@@ -122,6 +122,14 @@ def delete_snippet(snippet_id):
     snippets_db = [snippet for snippet in snippets_db if snippet["id"] != snippet_id]
     return jsonify({"message": "Snippet deleted"})
 
+@app.route("/snippet/<snippet_id>", methods=["GET"])
+def get_snippet(snippet_id):
+    snippet = next((s for s in snippets_db if s["id"] == snippet_id), None)
+    if snippet:
+        return jsonify(snippet)
+    return jsonify({"error": "Snippet not found"}), 404
+
+
 
 @app.route("/")
 def home():

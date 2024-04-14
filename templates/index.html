@@ -32,6 +32,8 @@
             clear: both;
             width: 100%; /* or an appropriate width */
             box-sizing: border-box;
+            white-space: pre-wrap; /* Maintains whitespace formatting */
+            font-family: monospace; /* Ensures consistent spacing */
             }
         .chat-box {
             background-color: #e9ecef;
@@ -39,6 +41,35 @@
             padding: 10px;
             margin-bottom: 10px;
         }
+        #snippetList {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 30%;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            border-left: 2px solid #dee2e6;
+            padding: 10px;
+        }
+
+        .snippet-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .snippet-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .delete-button {
+            float: right;
+            color: red;
+            cursor: pointer;
+        }
+
         
     </style>
     <meta charset="UTF-8">
@@ -56,6 +87,15 @@
     <div id="response" class="chat-box">
         <!-- Model responses will be displayed here -->
     </div>
+    <div id="snippetList" class="chat-box">
+        <!-- Snippets will be listed here -->
+    </div>    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            listSnippets();
+        });
+    </script>
 
     <script src="static/app.js"></script>
 </body>
