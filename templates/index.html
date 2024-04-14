@@ -23,17 +23,23 @@
             background-color: #0056b3;
         }
         #response {
-            margin-top: 20px;
-            padding: 20px;
+            max-height: 300px; /* Set a fixed maximum height */
+            overflow-y: auto; /* Enable vertical scrolling */
             background-color: white;
             border-radius: 5px;
-        }
+            padding: 20px;
+            margin-top: 50px;
+            clear: both;
+            width: 100%; /* or an appropriate width */
+            box-sizing: border-box;
+            }
         .chat-box {
             background-color: #e9ecef;
             border-radius: 5px;
             padding: 10px;
             margin-bottom: 10px;
         }
+        
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,24 +50,11 @@
     <h1>Code Snippet Generator</h1>
     <div class="chat-box">
         <label for="description">Describe your coding problem:</label><br>
-        <textarea id="description" name="description" rows="4"></textarea><br>
+        <textarea id="description" name="description" rows="6"></textarea><br>
         <button onclick="generateCode()">Generate Code</button>
     </div>
     <div id="response" class="chat-box">
         <!-- Model responses will be displayed here -->
-    </div>
-    <div class="chat-box">
-        <label for="feedback">Feedback:</label>
-        <input type="text" id="feedback" name="feedback"><br>
-        <label for="rating">Rating:</label>
-        <select id="rating" name="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select><br>
-        <button onclick="submitFeedback()">Submit Feedback</button>
     </div>
 
     <script src="static/app.js"></script>
