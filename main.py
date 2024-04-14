@@ -49,7 +49,7 @@ def refine_prompt(description, common_themes):
 
 
 # Assuming 'common_themes' is retrieved from 'analyze_feedback'
-data = load_data("snippets_db.json")
+data = load_data("database/snippets_db.json")
 common_themes = analyze_feedback(data)
 
 
@@ -60,7 +60,7 @@ def generate_code_with_codellama(prompt):
     return response  # Adjust based on actual response structure
 
 
-@app.route("/generate-code/", methods=["POST"])
+@app.route("/generate-code/", methods=["GET","POST"])
 def generate_code():
     description = request.form.get("description")
     requests_db.append(description)
@@ -77,7 +77,7 @@ def generate_code():
     return jsonify(snippet)
 
 
-@app.route("/submit-feedback/", methods=["POST"])
+@app.route("/submit-feedback/", methods=["GET","POST"])
 def submit_feedback():
     snippet_id = request.form.get("snippet_id")
     feedback = request.form.get("feedback")
@@ -137,4 +137,4 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, host = '0.0.0.0', port=5000)
