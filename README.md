@@ -19,7 +19,7 @@
     ollama serve
 
 
-Visit http://localhost:YOUR_SPECIFIED_PORT to confirm it's running.
+Visit http://localhost:11434 (default) to confirm it's running.
 
 ## Running the Application with Docker
 
