@@ -35,7 +35,7 @@ def analyze_feedback(data):
 
 
 # Load the JSON data
-data = load_data("snippets_db.json")
+data = load_data("database\snippets_db.json")
 
 # Analyze the feedback
 common_themes = analyze_feedback(data)

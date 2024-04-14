@@ -5,7 +5,7 @@ from uuid import uuid4
 import ollama
 from flask import Flask, render_template
 import json
-from analyze_feedback import analyze_feedback, load_data
+from utils.analyzeFeedback import analyze_feedback, load_data
 
 
 app = Flask(__name__)
