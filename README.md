@@ -17,6 +17,8 @@
 3. **Serve the model**
     ```bash
     ollama serve
+
+
 Visit http://localhost:YOUR_SPECIFIED_PORT to confirm it's running.
 
 ## Running the Application with Docker
